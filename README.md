@@ -1,6 +1,6 @@
-# Satellite imagery-based prediction of advanced demographics using embedded space statistics
+# DPESS: Satellite Imagery-based Prediction of Advanced Demographic Attributes Using Embedded Spatial Statistics
 
-Pytorch Implementation of Satellite imagery-based prediction of advanced demographics using embedded space statistics.
+Pytorch Implementation of DPESS, satellite imagery-based prediction of advanced demographics using embedded spatial statistics.
 
 ### Data
 
@@ -11,10 +11,6 @@ Demographic information is called the Esri Advanced Demographics is accessible b
 <br>
 Satellite images from the tiles of World Imagery
 <li>Visit the ArcGis website <a href="https://www.arcgis.com/home/item.html?id=10df2279f9684e4a9f6a7f08febac2a9/" rel="nofollow">for the world and high-resolution satellite and aerial imagery</a></li>
-
-<br>
-In this repository, we uploaded **whole custom dataset** used for fine-tuning and **small sample data** randomly selected from original dataset.
-You can find these data in ./data folder. (Custom dataset = "./data/proxy", Main dataset = "./data/sample_train", "./data/sample_test") 
 
 
 ### Required packages
