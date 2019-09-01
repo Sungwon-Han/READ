@@ -1,11 +1,13 @@
 import os
 import torch
+import glob
 import numpy as np
 import pandas as pd
 from skimage import io, transform
 from torchvision import transforms
 import torchvision.transforms.functional as F 
 from torch.utils.data import Dataset
+from PIL import Image
 
 class GPSDataset(Dataset):
     def __init__(self, metadata, root_dir, transform = None):
@@ -65,6 +67,21 @@ class ProxyDataset(Dataset):
             
         return sample   
 
+class UnlabeledDataset(Dataset):
+    def __init__(self, root_dir, transform=None):
+        self.file_list = glob.glob('./{}/*.png'.format(root_dir))
+        self.root_dir = './{}/'.format(root_dir)
+        self.transform = transform
+
+    def __len__(self):
+        return len(self.file_list)
+
+    def __getitem__(self, idx):
+        images = Image.open(self.file_list[idx])
+        if self.transform:
+            images = self.transform(images)
+        return images    
+    
 
 class RemovalDataset(Dataset):
     def __init__(self, metadata, root_dir, transform = None):

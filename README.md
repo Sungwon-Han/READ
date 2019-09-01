@@ -26,6 +26,7 @@ The code has been tested running under Python 3.5.2. with the following packages
 - torchnet == 0.0.4
 - torchvision == 0.2.2.post3
 - scikit-learn == 0.19.1
+- xgboost == 0.90
 
 <p>We recommend using the open data science platform <a href="https://www.continuum.io/downloads" rel="nofollow">Anaconda</a>.</p>
 

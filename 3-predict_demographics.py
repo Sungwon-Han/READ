@@ -6,6 +6,7 @@ from sklearn.preprocessing import PolynomialFeatures
 from sklearn.metrics import mean_squared_error, r2_score
 from dataloader import *
 from parameters import *
+import xgboost as xgb
 
 def main(args):
     trainX, trainy, testX, testy = prepare_dataset(args.idx)
@@ -25,8 +26,8 @@ def main(args):
 
 
 def prepare_dataset(idx):
-    train_district = GPSReducedDataset(metadata = "./data/sample_train/metadata.csv", root_dir = "./data/sample_train/reduced/", predict_y_idx = idx)
-    test_district = GPSReducedDataset(metadata = "./data/sample_test/metadata.csv", root_dir = "./data/sample_test/reduced/", predict_y_idx = idx)
+    train_district = GPSReducedDataset(metadata = "./data/train/metadata.csv", root_dir = "./data/train/reduced/", predict_y_idx = idx)
+    test_district = GPSReducedDataset(metadata = "./data/test/metadata.csv", root_dir = "./data/test/reduced/", predict_y_idx = idx)
     trainX, trainy, testX, testy = [], [], [], []
     for i in range(len(train_district)):
         trainX.append(train_district[i]['images'])
@@ -68,7 +69,7 @@ def dimensional_reduction(X, pca):
 
 
 def linear_regression(X, y, test_X, test_y):
-    regr = linear_model.Lasso(alpha=0.1)
+    regr = xgb.XGBRegressor(objective="reg:linear", random_state=42)
     regr.fit(X, y)
     y_pred = regr.predict(test_X)
     mean_squared = mean_squared_error(test_y, y_pred)

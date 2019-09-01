@@ -26,7 +26,12 @@ def extract_embeddings_parser():
     parser.add_argument('--lr', '--learning-rate', default=1e-4, type=float, metavar='LR', help='learning rate')
     parser.add_argument('--batch-size', default=50, type=int, help='batch size')
    
-    parser.add_argument('--epochs', default=10, type=int, help='total epochs')
+    parser.add_argument('--ema_decay', default=0.999, type=float, help='total epochs')
+    parser.add_argument('--rampup', default=20, type=int, help='total epochs')
+    parser.add_argument('--consistency', default=12.5, type=float, help='total epochs')
+
+
+    parser.add_argument('--epochs', default=1, type=int, help='total epochs')
     parser.add_argument('--checkpoint-epochs', default=10, type=int, help='checkpoint frequency')
     parser.add_argument('--evaluation-epochs', default=10, type=int, help='evaluation frequency') 
     parser.add_argument('--workers', default=4, type=int, help='number of workers') 
