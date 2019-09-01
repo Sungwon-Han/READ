@@ -1,6 +1,6 @@
-# DPESS: Satellite Imagery-based Prediction of Advanced Demographic Attributes Using Embedded Spatial Statistics
+# Lightweight and robust representation of economic scales from satellite imagery
 
-Pytorch Implementation of DPESS, satellite imagery-based prediction of advanced demographics using embedded spatial statistics.
+Pytorch Implementation of Lightweight and robust representation of economic scales from satellite imagery.
 
 ### Data
 
@@ -78,7 +78,8 @@ Default values of hyper-parameter are defined in parameters.py, extract_embeddin
 
 ```
 usage: 2-extract_embeddings.py [-h] [--lr LR] [--batch-size BATCH_SIZE]
-                               [--epochs EPOCHS]
+                               [--ema_decay EMA_DECAY] [--rampup RAMPUP]
+                               [--consistency CONSISTENCY] [--epochs EPOCHS]
                                [--checkpoint-epochs CHECKPOINT_EPOCHS]
                                [--evaluation-epochs EVALUATION_EPOCHS]
                                [--workers WORKERS] [--load]
@@ -92,6 +93,11 @@ optional arguments:
                         learning rate
   --batch-size BATCH_SIZE
                         batch size
+  --ema_decay EMA_DECAY
+                        total epochs
+  --rampup RAMPUP       total epochs
+  --consistency CONSISTENCY
+                        total epochs
   --epochs EPOCHS       total epochs
   --checkpoint-epochs CHECKPOINT_EPOCHS
                         checkpoint frequency
@@ -100,6 +106,7 @@ optional arguments:
   --workers WORKERS     number of workers
   --load                load trained model
   --modelurl MODELURL   model path
+
 ```
 
 ##### Example
@@ -108,7 +115,7 @@ $ python3 2-extract_embeddings.py --batch-size 50 --epochs 100
 ```
 
 ##### Result
-Extracted embeddings from satellite images are saved to "./data/sample_train/reduced", and "./data/sample_test/reduced"
+Extracted embeddings from satellite images are saved to "./data/train/reduced", and "./data/test/reduced"
 The size of matrix would be differ as the number of satellite images is different from every districts. (# of satellite images X 512)
 
 
@@ -125,7 +132,7 @@ Predict Demographics Parser
 
 optional arguments:
   -h, --help  show this help message and exit
-  --idx IDX   select which demographics to predict, 0 to 51
+  --idx IDX   select which demographics to predict
 ```
 
 ##### Example
